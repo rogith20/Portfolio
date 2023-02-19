@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* General styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        
+
+        /* Header styles */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            height: 70px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            padding: 0 30px;
+        }
+
+        .header-logo {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .header-nav {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-nav li {
+            margin-left: 20px;
+        }
+
+        .header-nav a {
+            text-decoration: none;
+            color: #555555;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .header-nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #5b5b5b;
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transition: all 0.3s ease;
+            transform-origin: bottom right;
+        }
+
+        .header-nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Hero section styles */
+        .hero {
+            background-image: url('https://www.springboard.com/blog/wp-content/uploads/2019/07/sb-blog-programming.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0 0 20px 0;
+        }
+
+        .hero-description {
+            font-size: 24px;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        /*About section styles*/
+        .about {
+            font-weight: bold;
+            padding-left: 3%;
+            position: none;
+            
+        }
+
+        /* Portfolio section styles */
+        .portfolio {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 0;
+        }
+
+        .portfolio-title {
+            font-size: 36px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 30px;
+        }
+
+        .portfolio
+        .portfolio-item {
+        background-color: #ffffff;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+    }
+
+    .portfolio-item:hover {
+        transform: translateY(-5px);
+        transition: all 0.3s ease;
+    }
+
+    .portfolio-item img {
+        width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .portfolio-item-title {
+        font-size: 24px;
+        font-weight: 500;
+        margin: 0 0 10px 0;
+    }
+
+    .portfolio-item-description {
+        font-size: 16px;
+        color: #777777;
+        margin: 0;
+    }
+
+    /* Contact section styles */
+    
+    .contact {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 100px 0;
+        text-align: center;
+    }
+
+    .contact-title {
+        font-size: 36px;
+        font-weight: 600;
+        margin-bottom: 50px;
+    }
+
+    .contact-form {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+        outline: none;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form textarea {
+        resize: none;
+        height: 150px;
+    }
+
+    .contact-form button {
+        background-color: #000000;
+        color: #ffffff;
+        border: none;
+        padding: 10px 30px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .contact-form button:hover {
+        background-color: #555555;
+    }
+
+    /* Footer styles */
+    footer {
+        background-color: #000000;
+        color: #ffffff;
+        text-align: center;
+        padding: 20px;
+        margin-top: 50px;
+    }
+
+    footer p {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    footer a {
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .header-container {
+            padding: 0 20px;
+        }
+
+        .header-logo {
+            font-size: 24px;
+        }
+
+        .portfolio-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+    }
+</style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="header-logo" style="color: #8ebf42">My Portfolio</div>
+            <ul class="header-nav">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="hero-container">
+            <h1 class="hero-title">Welcome to my portfolio!</h1>
+            <p class="hero-description">I'm an app developer specializing in Flutter, Dart, and Kotlin. Check out my work below!</p>
+            <a href="#portfolio" style="color: #8ebf42" class="hero-cta">View Portfolio</a>
+        </div>
+    </section>
+    
+    <!-- About section -->
+    <section id="about" class="about">
+    <section class="about">   
+        <div class="about-container" >
+            <h2 class="about-title">About Me</h2>
+            <p class="about-description">
+<p style="left: 20%;">  Hi there! My name is <i>Rogith R</i> , and I'm a fresher in Flutter mobile application developent environment. I have 1yr of experience building mobile applications and am passionate about creating user-friendly and visually appealing interfaces.</p>
+
+<p>  I have experience with various front-end technologies, including:</p>
+<ul>
+  <li>Flutter and Dart programming language</li>
+  <li>Mobile app development and UI design</li>
+  <li>Integration with REST APIs and third-party services</li>
+  <li>Cross-platform development with Flutter</li>
+  <li>Version control with Git and GitHub</li>
+</ul>
+
+<p>  Throughout my studies, I have worked on various Flutter mobile application projects, including Calculator,Word generator,To-do maker,Database Manager . I love learning new technologies and keeping up with the latest mobile development trends and best practices.</p>
+
+<p>  As a fresher, I am eager to take on new challenges and opportunities to grow my skills as a Flutter mobile application developer. When I'm not coding, I enjoy gaming and spending time with my significant other.</p>
+<p>  Here are some of the languages and frameworks I'm familiar with. </p>
+
+            <ul class="about-skills">
+                <li>Flutter</li>
+                <li>Dart</li>
+                <li>Kotlin</li>
+                <li>HTML</li>
+                <li>CSS</li>
+            </ul>
+        </div>
+    </section>
+    
+    <!-- Portfolio section -->
+    <section id="portfolio" class="portfolio">
+        <div class="portfolio-container">
+            <h2 class="portfolio-title">Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/400x300" alt="Portfolio item">
+                    <h3 class="portfolio-item-title">Portfolio Item 1</h3>
+                    <p class="portfolio-item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque diam diam, non euismod sapien auctor vel.</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/400x300" alt="Portfolio item">
+                    <h3 class="portfolio-item-title">Portfolio Item 2</h3>
+                    <p class="portfolio-item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque diam diam, non euismod sapien auctor vel.</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/400x300" alt="Portfolio item">
+                    <h3 class="portfolio-item-title">Portfolio Item 3</h3>
+                    <p class="portfolio-item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque diam diam, non euismod sapien auctor vel.</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/400x300" alt="Portfolio item">
+                    <h3 class="portfolio-item-title">Portfolio Item 4</h3>
+                    <p class="portfolio-item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque diam diam, non euismod sapien auctor vel.</p>
+               
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact section -->
+    <section id="contact" class="contact">
+    <div class="container"   style="background-color: #253e72;
+    color: #f7f7f7; height: 600px; max-width: 1500px; border-radius: 10px;
+        margin: 0 auto;
+        text-align: center;" >
+        <div style="text-align:center">
+            <br>
+          <h2>Contact Me</h2>
+          <p>Swing by for a cup of coffee, or leave me a message :)</p>
+        </div>
+        <div class="row">
+          <div class="column">
+            <img src="https://www.freepnglogos.com/uploads/heart-png/heart-red-picture-paint-21.png" style="width:5%">
+          </div>   
+          <div class="column">
+            <form action="/action_page.php">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="firstname" placeholder="Your name..">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+              <label for="country">Country</label>
+              <select id="country" name="Your country">
+                    <option>select country</option>
+                    <option value="AF">Afghanistan</option>
+                    <option value="AX">Aland Islands</option>
+                    <option value="AL">Albania</option>
+                    <option value="DZ">Algeria</option>
+                    <option value="AS">American Samoa</option>
+                    <option value="AD">Andorra</option>
+                    <option value="AO">Angola</option>
+                    <option value="AI">Anguilla</option>
+                    <option value="AQ">Antarctica</option>
+                    <option value="AG">Antigua and Barbuda</option>
+                    <option value="AR">Argentina</option>
+                    <option value="AM">Armenia</option>
+                    <option value="AW">Aruba</option>
+                    <option value="AU">Australia</option>
+                    <option value="AT">Austria</option>
+                    <option value="AZ">Azerbaijan</option>
+                    <option value="BS">Bahamas</option>
+                    <option value="BH">Bahrain</option>
+                    <option value="BD">Bangladesh</option>
+                    <option value="BB">Barbados</option>
+                    <option value="BY">Belarus</option>
+                    <option value="BE">Belgium</option>
+                    <option value="BZ">Belize</option>
+                    <option value="BJ">Benin</option>
+                    <option value="BM">Bermuda</option>
+                    <option value="BT">Bhutan</option>
+                    <option value="BO">Bolivia</option>
+                    <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
+                    <option value="BA">Bosnia and Herzegovina</option>
+                    <option value="BW">Botswana</option>
+                    <option value="BV">Bouvet Island</option>
+                    <option value="BR">Brazil</option>
+                    <option value="IO">British Indian Ocean Territory</option>
+                    <option value="BN">Brunei Darussalam</option>
+                    <option value="BG">Bulgaria</option>
+                    <option value="BF">Burkina Faso</option>
+                    <option value="BI">Burundi</option>
+                    <option value="KH">Cambodia</option>
+                    <option value="CM">Cameroon</option>
+                    <option value="CA">Canada</option>
+                    <option value="CV">Cape Verde</option>
+                    <option value="KY">Cayman Islands</option>
+                    <option value="CF">Central African Republic</option>
+                    <option value="TD">Chad</option>
+                    <option value="CL">Chile</option>
+                    <option value="CN">China</option>
+                    <option value="CX">Christmas Island</option>
+                    <option value="CC">Cocos (Keeling) Islands</option>
+                    <option value="CO">Colombia</option>
+                    <option value="KM">Comoros</option>
+                    <option value="CG">Congo</option>
+                    <option value="CD">Congo, Democratic Republic of the Congo</option>
+                    <option value="CK">Cook Islands</option>
+                    <option value="CR">Costa Rica</option>
+                    <option value="CI">Cote D'Ivoire</option>
+                    <option value="HR">Croatia</option>
+                    <option value="CU">Cuba</option>
+                    <option value="CW">Curacao</option>
+                    <option value="CY">Cyprus</option>
+                    <option value="CZ">Czech Republic</option>
+                    <option value="DK">Denmark</option>
+                    <option value="DJ">Djibouti</option>
+                    <option value="DM">Dominica</option>
+                    <option value="DO">Dominican Republic</option>
+                    <option value="EC">Ecuador</option>
+                    <option value="EG">Egypt</option>
+                    <option value="SV">El Salvador</option>
+                    <option value="GQ">Equatorial Guinea</option>
+                    <option value="ER">Eritrea</option>
+                    <option value="EE">Estonia</option>
+                    <option value="ET">Ethiopia</option>
+                    <option value="FK">Falkland Islands (Malvinas)</option>
+                    <option value="FO">Faroe Islands</option>
+                    <option value="FJ">Fiji</option>
+                    <option value="FI">Finland</option>
+                    <option value="FR">France</option>
+                    <option value="GF">French Guiana</option>
+                    <option value="PF">French Polynesia</option>
+                    <option value="TF">French Southern Territories</option>
+                    <option value="GA">Gabon</option>
+                    <option value="GM">Gambia</option>
+                    <option value="GE">Georgia</option>
+                    <option value="DE">Germany</option>
+                    <option value="GH">Ghana</option>
+                    <option value="GI">Gibraltar</option>
+                    <option value="GR">Greece</option>
+                    <option value="GL">Greenland</option>
+                    <option value="GD">Grenada</option>
+                    <option value="GP">Guadeloupe</option>
+                    <option value="GU">Guam</option>
+                    <option value="GT">Guatemala</option>
+                    <option value="GG">Guernsey</option>
+                    <option value="GN">Guinea</option>
+                    <option value="GW">Guinea-Bissau</option>
+                    <option value="GY">Guyana</option>
+                    <option value="HT">Haiti</option>
+                    <option value="HM">Heard Island and Mcdonald Islands</option>
+                    <option value="VA">Holy See (Vatican City State)</option>
+                    <option value="HN">Honduras</option>
+                    <option value="HK">Hong Kong</option>
+                    <option value="HU">Hungary</option>
+                    <option value="IS">Iceland</option>
+                    <option value="IN">India</option>
+                    <option value="ID">Indonesia</option>
+                    <option value="IR">Iran, Islamic Republic of</option>
+                    <option value="IQ">Iraq</option>
+                    <option value="IE">Ireland</option>
+                    <option value="IM">Isle of Man</option>
+                    <option value="IL">Israel</option>
+                    <option value="IT">Italy</option>
+                    <option value="JM">Jamaica</option>
+                    <option value="JP">Japan</option>
+                    <option value="JE">Jersey</option>
+                    <option value="JO">Jordan</option>
+                    <option value="KZ">Kazakhstan</option>
+                    <option value="KE">Kenya</option>
+                    <option value="KI">Kiribati</option>
+                    <option value="KP">Korea, Democratic People's Republic of</option>
+                    <option value="KR">Korea, Republic of</option>
+                    <option value="XK">Kosovo</option>
+                    <option value="KW">Kuwait</option>
+                    <option value="KG">Kyrgyzstan</option>
+                    <option value="LA">Lao People's Democratic Republic</option>
+                    <option value="LV">Latvia</option>
+                    <option value="LB">Lebanon</option>
+                    <option value="LS">Lesotho</option>
+                    <option value="LR">Liberia</option>
+                    <option value="LY">Libyan Arab Jamahiriya</option>
+                    <option value="LI">Liechtenstein</option>
+                    <option value="LT">Lithuania</option>
+                    <option value="LU">Luxembourg</option>
+                    <option value="MO">Macao</option>
+                    <option value="MK">Macedonia, the Former Yugoslav Republic of</option>
+                    <option value="MG">Madagascar</option>
+                    <option value="MW">Malawi</option>
+                    <option value="MY">Malaysia</option>
+                    <option value="MV">Maldives</option>
+                    <option value="ML">Mali</option>
+                    <option value="MT">Malta</option>
+                    <option value="MH">Marshall Islands</option>
+                    <option value="MQ">Martinique</option>
+                    <option value="MR">Mauritania</option>
+                    <option value="MU">Mauritius</option>
+                    <option value="YT">Mayotte</option>
+                    <option value="MX">Mexico</option>
+                    <option value="FM">Micronesia, Federated States of</option>
+                    <option value="MD">Moldova, Republic of</option>
+                    <option value="MC">Monaco</option>
+                    <option value="MN">Mongolia</option>
+                    <option value="ME">Montenegro</option>
+                    <option value="MS">Montserrat</option>
+                    <option value="MA">Morocco</option>
+                    <option value="MZ">Mozambique</option>
+                    <option value="MM">Myanmar</option>
+                    <option value="NA">Namibia</option>
+                    <option value="NR">Nauru</option>
+                    <option value="NP">Nepal</option>
+                    <option value="NL">Netherlands</option>
+                    <option value="AN">Netherlands Antilles</option>
+                    <option value="NC">New Caledonia</option>
+                    <option value="NZ">New Zealand</option>
+                    <option value="NI">Nicaragua</option>
+                    <option value="NE">Niger</option>
+                    <option value="NG">Nigeria</option>
+                    <option value="NU">Niue</option>
+                    <option value="NF">Norfolk Island</option>
+                    <option value="MP">Northern Mariana Islands</option>
+                    <option value="NO">Norway</option>
+                    <option value="OM">Oman</option>
+                    <option value="PK">Pakistan</option>
+                    <option value="PW">Palau</option>
+                    <option value="PS">Palestinian Territory, Occupied</option>
+                    <option value="PA">Panama</option>
+                    <option value="PG">Papua New Guinea</option>
+                    <option value="PY">Paraguay</option>
+                    <option value="PE">Peru</option>
+                    <option value="PH">Philippines</option>
+                    <option value="PN">Pitcairn</option>
+                    <option value="PL">Poland</option>
+                    <option value="PT">Portugal</option>
+                    <option value="PR">Puerto Rico</option>
+                    <option value="QA">Qatar</option>
+                    <option value="RE">Reunion</option>
+                    <option value="RO">Romania</option>
+                    <option value="RU">Russian Federation</option>
+                    <option value="RW">Rwanda</option>
+                    <option value="BL">Saint Barthelemy</option>
+                    <option value="SH">Saint Helena</option>
+                    <option value="KN">Saint Kitts and Nevis</option>
+                    <option value="LC">Saint Lucia</option>
+                    <option value="MF">Saint Martin</option>
+                    <option value="PM">Saint Pierre and Miquelon</option>
+                    <option value="VC">Saint Vincent and the Grenadines</option>
+                    <option value="WS">Samoa</option>
+                    <option value="SM">San Marino</option>
+                    <option value="ST">Sao Tome and Principe</option>
+                    <option value="SA">Saudi Arabia</option>
+                    <option value="SN">Senegal</option>
+                    <option value="RS">Serbia</option>
+                    <option value="CS">Serbia and Montenegro</option>
+                    <option value="SC">Seychelles</option>
+                    <option value="SL">Sierra Leone</option>
+                    <option value="SG">Singapore</option>
+                    <option value="SX">Sint Maarten</option>
+                    <option value="SK">Slovakia</option>
+                    <option value="SI">Slovenia</option>
+                    <option value="SB">Solomon Islands</option>
+                    <option value="SO">Somalia</option>
+                    <option value="ZA">South Africa</option>
+                    <option value="GS">South Georgia and the South Sandwich Islands</option>
+                    <option value="SS">South Sudan</option>
+                    <option value="ES">Spain</option>
+                    <option value="LK">Sri Lanka</option>
+                    <option value="SD">Sudan</option>
+                    <option value="SR">Suriname</option>
+                    <option value="SJ">Svalbard and Jan Mayen</option>
+                    <option value="SZ">Swaziland</option>
+                    <option value="SE">Sweden</option>
+                    <option value="CH">Switzerland</option>
+                    <option value="SY">Syrian Arab Republic</option>
+                    <option value="TW">Taiwan, Province of China</option>
+                    <option value="TJ">Tajikistan</option>
+                    <option value="TZ">Tanzania, United Republic of</option>
+                    <option value="TH">Thailand</option>
+                    <option value="TL">Timor-Leste</option>
+                    <option value="TG">Togo</option>
+                    <option value="TK">Tokelau</option>
+                    <option value="TO">Tonga</option>
+                    <option value="TT">Trinidad and Tobago</option>
+                    <option value="TN">Tunisia</option>
+                    <option value="TR">Turkey</option>
+                    <option value="TM">Turkmenistan</option>
+                    <option value="TC">Turks and Caicos Islands</option>
+                    <option value="TV">Tuvalu</option>
+                    <option value="UG">Uganda</option>
+                    <option value="UA">Ukraine</option>
+                    <option value="AE">United Arab Emirates</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="US">United States</option>
+                    <option value="UM">United States Minor Outlying Islands</option>
+                    <option value="UY">Uruguay</option>
+                    <option value="UZ">Uzbekistan</option>
+                    <option value="VU">Vanuatu</option>
+                    <option value="VE">Venezuela</option>
+                    <option value="VN">Viet Nam</option>
+                    <option value="VG">Virgin Islands, British</option>
+                    <option value="VI">Virgin Islands, U.s.</option>
+                    <option value="WF">Wallis and Futuna</option>
+                    <option value="EH">Western Sahara</option>
+                    <option value="YE">Yemen</option>
+                    <option value="ZM">Zambia</option>
+                    <option value="ZW">Zimbabwe</option>
+              </select>
+              <label for="subject">Subject</label>
+              <textarea id="subject" name="subject" placeholder="Write something to me.." style="height:150px"></textarea>
+              <br>
+              <br>
+              <button type="submit" style="background-color: #8ebf42; color: white; padding: 12px 20px; border: blueviolet; border-radius: 10px; cursor: pointer; transition: background-color 0.3s ease;">Submit</button>
+
+            </form>
+        </div>
+<p>Feel free to reach out to me via email or social media:</p>
+        </div>
+    <div style="text-align: left;">
+<ul type="square", style="position: left;">
+  <li>Email: <a href="mailto:rogithraja2004@gmail.com" style="color: #8ebf42">
+    <img src="https://iconape.com/wp-content/uploads/1/11/gmail-02.png" alt="Email Logo" height="20px"> E-mail me</li>
+  <li></a>
+
+    LinkedIn: <a href="https://www.linkedin.com/in/rogith-r-a14a05245/" style="color: #8ebf42">
+      <img src="https://sguru.org/wp-content/uploads/2018/02/linkedin-png-linkedin-icon-1600.png" alt="LinkedIn Logo" height="20px">
+      Rogith R
+    
+  </li>
+  <li>
+</a>
+    Twitter: <a href="https://twitter.com/Rogith_Raja_" style="color: #8ebf42">
+      <img src="https://th.bing.com/th/id/R.8e058857f734d8e3642996e6d9a08b6d?rik=bjJsp5O7CCIo5g&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_133950.png&ehk=PBIldbmA7w65ItIh1JwkfZ6JbAedWiIobj5%2fsLZAXew%3d&risl=&pid=ImgRaw&r=0" alt="Twitter Logo" height="20px">
+       @Rogith_raja_ </a>
+    
+  </li>
+  <li>
+    GitHub: <a href="https://github.com/rogith20" style="color: #8ebf42">
+      <img src="https://th.bing.com/th/id/R.3462037553fabf0f6e7bf0fe9ab11515?rik=0Ubh3aP6JzCPcw&riu=http%3a%2f%2fpngimg.com%2fuploads%2fgithub%2fgithub_PNG40.png&ehk=vDH1g6b2G5qphfQR7RsUJ7HmqSSwIMycien%2fvBj03ZU%3d&risl=&pid=ImgRaw&r=0" alt="GitHub Logo" height="20px">
+      Rogith20
+    </a>
+  </li>
+  <li>
+  Instagram: <a href="https://www.instagram.com/raja_rogith_/" style="color: #8ebf42">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Twitter Logo" height="20px">
+    Rogith Raja </a>
+    </li>
+</ul>
+
+          
+        </div>
+      </div>
+      <a href="#top" id="back-to-top-btn"><i class="fa fa-arrow-up"></i></a>
+    <!-- Footer section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2023 My Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>        
